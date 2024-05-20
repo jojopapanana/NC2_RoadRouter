@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5B1BA7112BFA4C2B008E1C00 /* RouteAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BA7102BFA4C2B008E1C00 /* RouteAPI.swift */; };
+		5B1BA7112BFA4C2B008E1C00 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BA7102BFA4C2B008E1C00 /* LocationViewModel.swift */; };
+		5B1BA7132BFB4806008E1C00 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BA7122BFB4806008E1C00 /* LocationManager.swift */; };
 		5BC3637C2BF3C085004D46DB /* itinerarymakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3637B2BF3C085004D46DB /* itinerarymakerApp.swift */; };
 		5BC3637E2BF3C085004D46DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3637D2BF3C085004D46DB /* ContentView.swift */; };
 		5BC363802BF3C085004D46DB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3637F2BF3C085004D46DB /* Item.swift */; };
@@ -17,7 +18,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5B1BA7102BFA4C2B008E1C00 /* RouteAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteAPI.swift; sourceTree = "<group>"; };
+		5B1BA7102BFA4C2B008E1C00 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
+		5B1BA7122BFB4806008E1C00 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5BC363782BF3C085004D46DB /* itinerarymaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = itinerarymaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC3637B2BF3C085004D46DB /* itinerarymakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itinerarymakerApp.swift; sourceTree = "<group>"; };
 		5BC3637D2BF3C085004D46DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -60,10 +62,11 @@
 				5BC3637B2BF3C085004D46DB /* itinerarymakerApp.swift */,
 				5BC3637D2BF3C085004D46DB /* ContentView.swift */,
 				5BC3638B2BF3D153004D46DB /* RouteView.swift */,
+				5B1BA7102BFA4C2B008E1C00 /* LocationViewModel.swift */,
 				5BC3637F2BF3C085004D46DB /* Item.swift */,
 				5BC363812BF3C086004D46DB /* Assets.xcassets */,
 				5BC363832BF3C086004D46DB /* Preview Content */,
-				5B1BA7102BFA4C2B008E1C00 /* RouteAPI.swift */,
+				5B1BA7122BFB4806008E1C00 /* LocationManager.swift */,
 			);
 			path = itinerarymaker;
 			sourceTree = "<group>";
@@ -148,8 +151,9 @@
 			files = (
 				5BC3638C2BF3D153004D46DB /* RouteView.swift in Sources */,
 				5BC3637E2BF3C085004D46DB /* ContentView.swift in Sources */,
+				5B1BA7132BFB4806008E1C00 /* LocationManager.swift in Sources */,
 				5BC363802BF3C085004D46DB /* Item.swift in Sources */,
-				5B1BA7112BFA4C2B008E1C00 /* RouteAPI.swift in Sources */,
+				5B1BA7112BFA4C2B008E1C00 /* LocationViewModel.swift in Sources */,
 				5BC3637C2BF3C085004D46DB /* itinerarymakerApp.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
