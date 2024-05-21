@@ -13,6 +13,7 @@ class LocationViewModel: ObservableObject{
     @Published var totalTravelTime:TimeInterval = 0.0
     @Published var travelTime: String?
     @Published var optimizedLocationNames:[String?] = []
+    @Published var optimizedLocationCoordinates:[CLLocationCoordinate2D?] = []
     
     func fetchOptimizedRouteFrom(destinations: [CLLocationCoordinate2D?], apiKey: String, locationNames:[String?]) {
         guard destinations.count > 1 else { return }
@@ -48,13 +49,13 @@ class LocationViewModel: ObservableObject{
                     return
                 }
                 
-                // Log the raw JSON response for debugging
-//                if let rawResponse = String(data: data, encoding: .utf8) {
-//                    print("Raw JSON response: \(rawResponse)")
-//                } else {
-//                    print("Error: Unable to convert data to String")
-//                    return
-//                }
+//                 Log the raw JSON response for debugging
+                if let rawResponse = String(data: data, encoding: .utf8) {
+                    print("Raw JSON response: \(rawResponse)")
+                } else {
+                    print("Error: Unable to convert data to String")
+                    return
+                }
                 
                 do {
                     if let jsonResponse = try JSONSerialization.jsonObject(with: data, options: []) as? [String: Any],
@@ -77,6 +78,10 @@ class LocationViewModel: ObservableObject{
                             self.optimizedLocationNames.append(locationNames[locationNames.count-1])
                             print("fixed names: \(optimizedLocationNames)")
                             self.fetchRouteFrom(destinations: orderedDestinations)
+                            
+                            for i in 0..<orderedDestinations.count{
+                                self.optimizedLocationCoordinates.append(orderedDestinations[i])
+                            }
                         }
                     } else {
                         print("Error: Invalid JSON structure")
