@@ -14,50 +14,85 @@ struct RouteResultView: View {
     @State private var selectedItem:MKMapItem?
     var locationNames:[String?]
     @ObservedObject private var vm = LocationViewModel()
+    @State private var isPresented:Bool = true
 
     var body: some View {
         NavigationStack{
-            Map(selection: $selectedItem) {
-                ForEach(0..<vm.routes.count, id: \.self) { index in
-                    let route = vm.routes[index]
-                        MapPolyline(route!.polyline)
-                            .stroke(Color.blue, lineWidth: 8)
+            HStack{
+                VStack{
+                    Text("Route Information")
+                        .font(.largeTitle)
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                        .padding(.bottom, 36)
+
+                    ForEach(vm.optimizedLocationNames, id:\.self){index in
+                        if(index == vm.optimizedLocationNames[0]){
+                            Text("Starting point: \(index!)")
+                                .multilineTextAlignment(.leading)
+                        } else if (index == vm.optimizedLocationNames[vm.optimizedLocationNames.count-1]){
+                            Text("Final point: \(index!)")
+                                .multilineTextAlignment(.leading)
+                        } else {
+                            Text(index!)
+                                .multilineTextAlignment(.leading)
+                        }
+                    }
+                    
+                    Spacer()
+                    
+                    Button{
+                        
+                    } label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 20.0)
+                                .fill(Color.button)
+                            Text("Save Route")
+                                .foregroundStyle(Color.text)
+                                .font(.title2)
+                                .fontWeight(.semibold)
+                        }
+                        .frame(width: 230, height: 78)
+                    }
+                    
                 }
+                .padding()
+                .frame(width: 300)
                 
-                ForEach(0..<vm.optimizedLocationNames.count){ index in
-                    Marker(vm.optimizedLocationNames[index]!, coordinate: vm.optimizedLocationCoordinates[index]!)
-                }
-            }
-            .ignoresSafeArea()
-            .onAppear(perform: {vm.fetchOptimizedRouteFrom(destinations: destinations, apiKey: "AIzaSyCPmcKGFLXqJQtlsstygllMmEV-tfdspJA", locationNames: locationNames)
-            })
-            .overlay(alignment: .bottom, content: {
-                HStack {
-                    if let identifier = (vm.travelTime) {
-                        Text("Travel time: \(identifier)")
-                            .padding()
-                            .font(.headline)
-                            .foregroundStyle(.black)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(15)
+                Map(selection: $selectedItem) {
+                    ForEach(0..<vm.routes.count, id: \.self) { index in
+                        let route = vm.routes[index]
+                            MapPolyline(route!.polyline)
+                                .stroke(Color.blue, lineWidth: 8)
+                    }
+                    
+                    ForEach(0..<vm.optimizedLocationNames.count, id:\.self){ index in
+                        Marker(vm.optimizedLocationNames[index]!, coordinate: vm.optimizedLocationCoordinates[index]!)
                     }
                 }
-            })
-            
-            Text("Route Information")
-                .font(.title)
-                .fontWeight(.bold)
-
-            ForEach(vm.optimizedLocationNames, id:\.self){index in
-                if(index == vm.optimizedLocationNames[0]){
-                    Text("Starting point: \(index!)")
-                } else if (index == vm.optimizedLocationNames[vm.optimizedLocationNames.count-1]){
-                    Text("Final point: \(index!)")
-                } else {
-                    Text(index!)
-                }
+                .ignoresSafeArea()
+                .onAppear(perform: {vm.fetchOptimizedRouteFrom(destinations: destinations, apiKey: "AIzaSyCPmcKGFLXqJQtlsstygllMmEV-tfdspJA", locationNames: locationNames)
+                })
+                .overlay(alignment: .bottom, content: {
+                    HStack {
+                        if let identifier = (vm.travelTime) {
+                            Text("Travel time: \(identifier)")
+                                .padding()
+                                .font(.headline)
+                                .foregroundStyle(.black)
+                                .background(.ultraThinMaterial)
+                                .cornerRadius(15)
+                        }
+                    }
+                })
             }
+            .background(Color.background)
             .navigationTitle("Routes Result")
         }
     }
+}
+
+#Preview{
+    RouteResultView(destinations: [
+    CLLocationCoordinate2D(latitude: 34.134117, longitude: -118.321495)], locationNames: ["Hollywood Sign"])
 }

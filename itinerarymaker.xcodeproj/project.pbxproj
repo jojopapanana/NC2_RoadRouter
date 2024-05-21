@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		5B1BA7112BFA4C2B008E1C00 /* LocationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BA7102BFA4C2B008E1C00 /* LocationViewModel.swift */; };
-		5B1BA7132BFB4806008E1C00 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BA7122BFB4806008E1C00 /* LocationManager.swift */; };
 		5B1BA7182BFC4A8E008E1C00 /* LandingPage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BA7172BFC4A8E008E1C00 /* LandingPage.swift */; };
 		5B1BA71A2BFC4BFF008E1C00 /* InsertLocationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BA7192BFC4BFF008E1C00 /* InsertLocationView.swift */; };
 		5B1BA71D2BFC50CF008E1C00 /* RouteResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BA71C2BFC50CF008E1C00 /* RouteResultView.swift */; };
@@ -21,7 +20,6 @@
 
 /* Begin PBXFileReference section */
 		5B1BA7102BFA4C2B008E1C00 /* LocationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationViewModel.swift; sourceTree = "<group>"; };
-		5B1BA7122BFB4806008E1C00 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		5B1BA7172BFC4A8E008E1C00 /* LandingPage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandingPage.swift; sourceTree = "<group>"; };
 		5B1BA7192BFC4BFF008E1C00 /* InsertLocationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InsertLocationView.swift; sourceTree = "<group>"; };
 		5B1BA71C2BFC50CF008E1C00 /* RouteResultView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteResultView.swift; sourceTree = "<group>"; };
@@ -88,7 +86,6 @@
 				5BC3637F2BF3C085004D46DB /* Item.swift */,
 				5BC363812BF3C086004D46DB /* Assets.xcassets */,
 				5BC363832BF3C086004D46DB /* Preview Content */,
-				5B1BA7122BFB4806008E1C00 /* LocationManager.swift */,
 			);
 			path = itinerarymaker;
 			sourceTree = "<group>";
@@ -174,7 +171,6 @@
 				5B1BA7182BFC4A8E008E1C00 /* LandingPage.swift in Sources */,
 				5B1BA71D2BFC50CF008E1C00 /* RouteResultView.swift in Sources */,
 				5BC3637E2BF3C085004D46DB /* ContentView.swift in Sources */,
-				5B1BA7132BFB4806008E1C00 /* LocationManager.swift in Sources */,
 				5B1BA71A2BFC4BFF008E1C00 /* InsertLocationView.swift in Sources */,
 				5BC363802BF3C085004D46DB /* Item.swift in Sources */,
 				5B1BA7112BFA4C2B008E1C00 /* LocationViewModel.swift in Sources */,

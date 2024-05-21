@@ -76,7 +76,6 @@ class LocationViewModel: ObservableObject{
                             }
                             // untuk masukin nama address terakhir
                             self.optimizedLocationNames.append(locationNames[locationNames.count-1])
-                            print("fixed names: \(optimizedLocationNames)")
                             self.fetchRouteFrom(destinations: orderedDestinations)
                             
                             for i in 0..<orderedDestinations.count{

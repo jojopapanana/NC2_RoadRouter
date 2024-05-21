@@ -44,40 +44,45 @@ struct InsertLocationView: View {
             })
             
             if(!locationNames.isEmpty){
-                VStack{
-                    Text("Your selected locations:")
-                        .font(.title)
-                        .fontWeight(.bold)
-                        .padding()
-                    
-                    List{
-                        ForEach(locationNames, id:\.self){name in
-                            Text(name!)
+                ZStack{
+                    Rectangle()
+                        .fill(Color.background)
+                    VStack{
+                        Text("Your selected locations:")
+                            .font(.title)
+                            .fontWeight(.bold)
+                            .padding()
+                        
+                        List{
+                            ForEach(locationNames, id:\.self){name in
+                                Text(name!)
+                            }
+                            .onDelete(perform: { indexSet in
+                                locationNames.remove(atOffsets: indexSet)
+                            })
                         }
-                        .onDelete(perform: { indexSet in
-                            locationNames.remove(atOffsets: indexSet)
-                        })
+                        .padding()
+                        
+                        NavigationLink{
+                            RouteResultView(destinations: destinations, locationNames: locationNames)
+                        } label: {
+                            ZStack{
+                                RoundedRectangle(cornerRadius: 20.0)
+                                    .fill(Color.button)
+                                    Text("Start")
+                                    .foregroundStyle(Color.white)
+                                    .fontWeight(.semibold)
+                                    .font(.subheadline)
+                                    .shadow(radius: 10)
+                            }
+                            .frame(width: 100, height: 50)
+                        }
+                        .padding(.bottom, 16)
                     }
-                    .padding()
                 }
                 .frame(maxHeight: 400)
+                .navigationTitle("Search for Locations")
             }
-            
-            NavigationLink{
-                RouteResultView(destinations: destinations, locationNames: locationNames)
-            } label: {
-                ZStack{
-                    RoundedRectangle(cornerRadius: 20.0)
-                        .fill(Color.button)
-                        Text("Start")
-                        .foregroundStyle(Color.white)
-                        .fontWeight(.semibold)
-                        .font(.subheadline)
-                        .shadow(radius: 10)
-                }
-                .frame(width: 100, height: 50)
-            }
-            .navigationTitle("Search for Locations")
         }
     }
 }
