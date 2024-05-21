@@ -7,6 +7,7 @@
 
 import SwiftUI
 import MapKit
+import SwiftData
 
 struct RouteResultView: View {
     @State private var route: MKRoute?
@@ -14,7 +15,8 @@ struct RouteResultView: View {
     @State private var selectedItem:MKMapItem?
     var locationNames:[String?]
     @ObservedObject private var vm = LocationViewModel()
-    @State private var isPresented:Bool = true
+    @State private var isPresented:Bool = false
+    @Environment(\.modelContext) private var context
 
     var body: some View {
         NavigationStack{
@@ -42,7 +44,8 @@ struct RouteResultView: View {
                     Spacer()
                     
                     Button{
-                        
+                        vm.saveRoute(context: self.context)
+                        self.isPresented = true
                     } label: {
                         ZStack{
                             RoundedRectangle(cornerRadius: 20.0)
@@ -88,6 +91,9 @@ struct RouteResultView: View {
             }
             .background(Color.background)
             .navigationTitle("Routes Result")
+        }
+        .navigationDestination(isPresented: $isPresented){
+            SavedRoutesView()
         }
     }
 }

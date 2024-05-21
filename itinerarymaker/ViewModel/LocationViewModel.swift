@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import SwiftData
 
 class LocationViewModel: ObservableObject{
     @Published var routes:[MKRoute?] = []
@@ -126,5 +127,10 @@ class LocationViewModel: ObservableObject{
         DispatchQueue.main.async{
             self.travelTime = formatter.string(from: self.totalTravelTime)
         }
+    }
+    
+    func saveRoute(context: ModelContext){
+        let route = Routes(destinations: optimizedLocationCoordinates, destinationNames: optimizedLocationNames)
+        context.insert(route)
     }
 }

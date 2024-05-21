@@ -37,9 +37,26 @@ struct LandingPage: View {
                         ZStack{
                             RoundedRectangle(cornerRadius: 20.0)
                                 .fill(Color.button)
-                                .frame(width: 288, height: 90)
+                                .frame(width: 288, height: 70)
                             
-                            Text("Go!")
+                            Text("Search for route")
+                                .fontWeight(.semibold)
+                                .foregroundStyle(Color.white)
+                                .padding()
+                                .font(.title3)
+                        }
+                    }
+                    .padding(.bottom, 16)
+                    
+                    NavigationLink{
+                        SavedRoutesView()
+                    } label: {
+                        ZStack{
+                            RoundedRectangle(cornerRadius: 20.0)
+                                .fill(Color.button)
+                                .frame(width: 288, height: 70)
+                            
+                            Text("Saved routes")
                                 .fontWeight(.semibold)
                                 .foregroundStyle(Color.white)
                                 .padding()

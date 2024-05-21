@@ -62,6 +62,8 @@ struct InsertLocationView: View {
                             })
                         }
                         .padding()
+                        .background(Color.background)
+                        .scrollContentBackground(.hidden)
                         
                         NavigationLink{
                             RouteResultView(destinations: destinations, locationNames: locationNames)
