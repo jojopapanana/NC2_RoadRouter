@@ -49,13 +49,14 @@ struct InsertLocationView: View {
                         .fill(Color.background)
                     VStack{
                         Text("Your selected locations:")
-                            .font(.title)
+                            .font(.system(size: 40.0))
                             .fontWeight(.bold)
                             .padding()
                         
                         List{
                             ForEach(locationNames, id:\.self){name in
                                 Text(name!)
+                                    .font(.system(size: 20.0))
                             }
                             .onDelete(perform: { indexSet in
                                 locationNames.remove(atOffsets: indexSet)
@@ -74,10 +75,10 @@ struct InsertLocationView: View {
                                     Text("Start")
                                     .foregroundStyle(Color.white)
                                     .fontWeight(.semibold)
-                                    .font(.subheadline)
+                                    .font(.system(size: 30.0))
                                     .shadow(radius: 10)
                             }
-                            .frame(width: 100, height: 50)
+                            .frame(width: 200, height: 50)
                         }
                         .padding(.bottom, 16)
                     }

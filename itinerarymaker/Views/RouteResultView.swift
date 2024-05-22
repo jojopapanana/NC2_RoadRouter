@@ -31,17 +31,43 @@ struct RouteResultView: View {
                     ForEach(vm.optimizedLocationNames, id:\.self){index in
                         if(index == vm.optimizedLocationNames[0]){
                             Text("Starting point: \(index!)")
-                                .multilineTextAlignment(.leading)
+                                .font(.system(size: 25.0))
+                                .multilineTextAlignment(.center)
+                            Text("\n●\n●\n●\n")
+                                .opacity(0.7)
                         } else if (index == vm.optimizedLocationNames[vm.optimizedLocationNames.count-1]){
                             Text("Final point: \(index!)")
-                                .multilineTextAlignment(.leading)
+                                .font(.system(size: 25.0))
+                                .multilineTextAlignment(.center)
                         } else {
-                            Text(index!)
-                                .multilineTextAlignment(.leading)
+                            Text("\(index!)")
+                                .font(.system(size: 25.0))
+                                .multilineTextAlignment(.center)
+                            Text("\n●\n●\n●\n")
+                                .opacity(0.7)
                         }
                     }
                     
                     Spacer()
+                    
+                    Text("Total Travel Time:")
+                        .font(.system(size: 30.0))
+                        .fontWeight(.bold)
+                    
+                    if let identifier = (vm.travelTime){
+                        Text("\(identifier)")
+                            .font(.system(size: 25.0))
+                            .padding(.bottom, 16)
+                    }
+                    
+                    Text("Total Travel Distance:")
+                        .font(.system(size: 30.0))
+                        .fontWeight(.bold)
+                        .multilineTextAlignment(.center)
+                    
+                    Text("\(vm.totalTravelDistance, specifier: "%.2f") km")
+                        .font(.system(size: 25.0))
+                        .padding(.bottom, 16)
                     
                     Button{
                         vm.saveRoute(context: self.context)
@@ -51,7 +77,7 @@ struct RouteResultView: View {
                             RoundedRectangle(cornerRadius: 20.0)
                                 .fill(Color.button)
                             Text("Save Route")
-                                .foregroundStyle(Color.text)
+                                .foregroundStyle(Color.white)
                                 .font(.title2)
                                 .fontWeight(.semibold)
                         }

@@ -18,18 +18,19 @@ struct LandingPage: View {
                 VStack{
                     Spacer()
                     
-                    Image("logorr")
+                    Image("logorr1")
                         .frame(width: 300, height: 300)
-                        .padding(.bottom, 168)
+                        .padding(.bottom, 112)
                     
                     Text("RoadRouter")
-                        .font(.largeTitle)
+                        .font(.system(size: 60.0))
                         .fontWeight(.bold)
-                        .padding(.bottom, 16)
+                        .foregroundStyle(Color.text)
                     
-                    Text("Plan your best road trip route now!")
-                        .font(.title2)
+                    Text("Plan your best traveling trip experience!")
+                        .font(.system(size: 40.0))
                         .padding(.bottom, 56)
+                        .foregroundStyle(Color.text)
                     
                     NavigationLink{
                         InsertLocationView()
@@ -43,7 +44,7 @@ struct LandingPage: View {
                                 .fontWeight(.semibold)
                                 .foregroundStyle(Color.white)
                                 .padding()
-                                .font(.title3)
+                                .font(.system(size: 25.0))
                         }
                     }
                     .padding(.bottom, 16)
@@ -60,7 +61,7 @@ struct LandingPage: View {
                                 .fontWeight(.semibold)
                                 .foregroundStyle(Color.white)
                                 .padding()
-                                .font(.title3)
+                                .font(.system(size: 25.0))
                         }
                     }
                     

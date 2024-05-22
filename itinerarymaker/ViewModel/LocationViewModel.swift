@@ -15,6 +15,7 @@ class LocationViewModel: ObservableObject{
     @Published var travelTime: String?
     @Published var optimizedLocationNames:[String?] = []
     @Published var optimizedLocationCoordinates:[CLLocationCoordinate2D?] = []
+    @Published var totalTravelDistance:Double = 0.0
     
     func fetchOptimizedRouteFrom(destinations: [CLLocationCoordinate2D?], apiKey: String, locationNames:[String?]) {
         guard destinations.count > 1 else { return }
@@ -50,7 +51,6 @@ class LocationViewModel: ObservableObject{
                     return
                 }
                 
-//                 Log the raw JSON response for debugging
                 if let rawResponse = String(data: data, encoding: .utf8) {
                     print("Raw JSON response: \(rawResponse)")
                 } else {
@@ -71,11 +71,9 @@ class LocationViewModel: ObservableObject{
                         
                         DispatchQueue.main.async {
                             self.optimizedLocationNames = [locationNames[0]]
-                            // for loop untuk masukin nama address nya sesuai urutan yang udah optimized
                             for i in 0..<waypointOrder.count{
                                 self.optimizedLocationNames.append(locationNames[waypointOrder[i]+1])
                             }
-                            // untuk masukin nama address terakhir
                             self.optimizedLocationNames.append(locationNames[locationNames.count-1])
                             self.fetchRouteFrom(destinations: orderedDestinations)
                             
@@ -112,6 +110,7 @@ class LocationViewModel: ObservableObject{
                         self.routes.append(route)
                         self.totalTravelTime += route.expectedTravelTime
                         self.getTravelTime()
+                        self.totalTravelDistance += route.distance
                     }
                 }
             }
