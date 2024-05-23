@@ -11,9 +11,9 @@ import SwiftData
 
 struct RouteResultView: View {
     @State private var route: MKRoute?
-    var destinations:[CLLocationCoordinate2D?]
+    @State var destinations:[CLLocationCoordinate2D?]
     @State private var selectedItem:MKMapItem?
-    var locationNames:[String?]
+    @State var locationNames:[String?]
     @ObservedObject private var vm = LocationViewModel()
     @State private var isPresented:Bool = false
     @Environment(\.modelContext) private var context
@@ -27,24 +27,29 @@ struct RouteResultView: View {
                         .fontWeight(.bold)
                         .multilineTextAlignment(.center)
                         .padding(.bottom, 36)
-
-                    ForEach(vm.optimizedLocationNames, id:\.self){index in
-                        if(index == vm.optimizedLocationNames[0]){
-                            Text("Starting point: \(index!)")
-                                .font(.system(size: 25.0))
-                                .multilineTextAlignment(.center)
-                            Text("\n●\n●\n●\n")
-                                .opacity(0.7)
-                        } else if (index == vm.optimizedLocationNames[vm.optimizedLocationNames.count-1]){
-                            Text("Final point: \(index!)")
-                                .font(.system(size: 25.0))
-                                .multilineTextAlignment(.center)
-                        } else {
-                            Text("\(index!)")
-                                .font(.system(size: 25.0))
-                                .multilineTextAlignment(.center)
-                            Text("\n●\n●\n●\n")
-                                .opacity(0.7)
+                        .lineLimit(nil)
+                    ScrollView{
+                        ForEach(vm.optimizedLocationNames, id:\.self){index in
+                            if(index == vm.optimizedLocationNames[0]){
+                                Text("Starting point: \(index!)")
+                                    .font(.system(size: 25.0))
+                                    .multilineTextAlignment(.center)
+                                    .lineLimit(nil)
+                                Text("\n●\n●\n●\n")
+                                    .opacity(0.7)
+                            } else if (index == vm.optimizedLocationNames[vm.optimizedLocationNames.count-1]){
+                                Text("Final point: \(index!)")
+                                    .font(.system(size: 25.0))
+                                    .multilineTextAlignment(.center)
+                                    .lineLimit(nil)
+                            } else {
+                                Text("\(index!)")
+                                    .font(.system(size: 25.0))
+                                    .multilineTextAlignment(.center)
+                                    .lineLimit(nil)
+                                Text("\n●\n●\n●\n")
+                                    .opacity(0.7)
+                            }
                         }
                     }
                     
@@ -113,6 +118,10 @@ struct RouteResultView: View {
                                 .cornerRadius(15)
                         }
                     }
+                })
+                .onDisappear(perform: {
+                    destinations.removeAll()
+                    locationNames.removeAll()
                 })
             }
             .background(Color.background)

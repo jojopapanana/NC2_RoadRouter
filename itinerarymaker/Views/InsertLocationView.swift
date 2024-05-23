@@ -27,6 +27,7 @@ struct InsertLocationView: View {
             }
             .ignoresSafeArea()
             .searchable(text: $searchQuery, placement: .navigationBarDrawer, prompt: "Locations")
+            .autocorrectionDisabled(true)
             .onSubmit(of: .search) {
                 self.search(for: searchQuery)
             }
@@ -60,6 +61,7 @@ struct InsertLocationView: View {
                             }
                             .onDelete(perform: { indexSet in
                                 locationNames.remove(atOffsets: indexSet)
+                                destinations.remove(atOffsets: indexSet)
                             })
                         }
                         .padding()
