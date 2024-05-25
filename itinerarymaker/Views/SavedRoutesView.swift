@@ -24,6 +24,7 @@ struct SavedRoutesView: View {
                             RouteResultView(destinations: route.destinations, locationNames: route.destinationNames)
                         } label: {
                             Text("Route from \(route.destinationNames[0]!) to \(route.destinationNames[route.destinationNames.count-1]!)")
+                                .font(.system(size: 20.0))
                         }
                     }
                     .onDelete(perform: { indexSet in

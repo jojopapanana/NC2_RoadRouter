@@ -70,15 +70,17 @@ class LocationViewModel: ObservableObject{
                         print("order: \(orderedDestinations)")
                         
                         DispatchQueue.main.async {
-                            self.optimizedLocationNames = [locationNames[0]]
-                            for i in 0..<waypointOrder.count{
-                                self.optimizedLocationNames.append(locationNames[waypointOrder[i]+1])
-                            }
-                            self.optimizedLocationNames.append(locationNames[locationNames.count-1])
-                            self.fetchRouteFrom(destinations: orderedDestinations)
-                            
-                            for i in 0..<orderedDestinations.count{
-                                self.optimizedLocationCoordinates.append(orderedDestinations[i])
+                            if(locationNames.count == waypointOrder.count+2){
+                                self.optimizedLocationNames = [locationNames[0]]
+                                for i in 0..<waypointOrder.count{
+                                    self.optimizedLocationNames.append(locationNames[waypointOrder[i]+1])
+                                }
+                                self.optimizedLocationNames.append(locationNames[locationNames.count-1])
+                                self.fetchRouteFrom(destinations: orderedDestinations)
+                                
+                                for i in 0..<orderedDestinations.count{
+                                    self.optimizedLocationCoordinates.append(orderedDestinations[i])
+                                }
                             }
                         }
                     } else {
@@ -106,7 +108,6 @@ class LocationViewModel: ObservableObject{
                 let result = try? await MKDirections(request: request).calculate()
                 if let route = result?.routes.first {
                     DispatchQueue.main.async{
-                        //DispatchQueue.main.async memastikan routes, totaltraveltime di update di main thread
                         self.routes.append(route)
                         self.totalTravelTime += route.expectedTravelTime
                         self.getTravelTime()

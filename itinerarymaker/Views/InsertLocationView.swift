@@ -14,13 +14,15 @@ struct InsertLocationView: View {
     @State private var searchResults:[MKMapItem]=[]
     @State var destinations:[CLLocationCoordinate2D?] = []
     @State private var selectedItem:MKMapItem?
+    @State private var mapPosition = MapCameraPosition.automatic
     @State private var addressCoordinate:CLLocationCoordinate2D?
     @State var locationNames:[String?]=[]
     @ObservedObject private var vm = LocationViewModel()
+    
 
     var body: some View {
         NavigationStack{
-            Map(selection: $selectedItem) {
+            Map(position: $mapPosition, selection: $selectedItem) {
                 ForEach(searchResults, id: \.self) { result in
                     Marker(item: result)
                 }
@@ -31,18 +33,6 @@ struct InsertLocationView: View {
             .onSubmit(of: .search) {
                 self.search(for: searchQuery)
             }
-            .overlay(alignment: .bottom, content: {
-                HStack {
-                    if let identifier = (vm.travelTime) {
-                        Text("Travel time: \(identifier)")
-                            .padding()
-                            .font(.headline)
-                            .foregroundStyle(.black)
-                            .background(.ultraThinMaterial)
-                            .cornerRadius(15)
-                    }
-                }
-            })
             
             if(!locationNames.isEmpty){
                 ZStack{
@@ -86,7 +76,6 @@ struct InsertLocationView: View {
                     }
                 }
                 .frame(maxHeight: 400)
-                .navigationTitle("Search for Locations")
             }
         }
     }
