@@ -34,49 +34,75 @@ struct InsertLocationView: View {
                 self.search(for: searchQuery)
             }
             
-            if(!locationNames.isEmpty){
-                ZStack{
-                    Rectangle()
-                        .fill(Color.background)
+            if(!searchResults.isEmpty){
+                HStack{
                     VStack{
-                        Text("Your selected locations:")
-                            .font(.system(size: 40.0))
+                        Text("Select the location:")
+                            .font(.system(size: 30.0))
                             .fontWeight(.bold)
                             .padding()
                         
                         List{
-                            ForEach(locationNames, id:\.self){name in
-                                Text(name!)
-                                    .font(.system(size: 20.0))
+                            ForEach(searchResults, id:\.self){result in
+                                Button{
+                                    addDestination(address: result)
+                                } label: {
+                                    Text(result.name!)
+                                        .font(.system(size: 20.0))
+                                }
                             }
-                            .onDelete(perform: { indexSet in
-                                locationNames.remove(atOffsets: indexSet)
-                                destinations.remove(atOffsets: indexSet)
-                            })
                         }
+                        .listStyle(.plain)
                         .padding()
-                        .background(Color.background)
-                        .scrollContentBackground(.hidden)
-                        
-                        NavigationLink{
-                            RouteResultView(destinations: destinations, locationNames: locationNames)
-                        } label: {
-                            ZStack{
-                                RoundedRectangle(cornerRadius: 20.0)
-                                    .fill(Color.button)
-                                    Text("Start")
-                                    .foregroundStyle(Color.white)
-                                    .fontWeight(.semibold)
+                    }
+                    
+                    
+                    if(!locationNames.isEmpty){
+                        ZStack{
+                            Rectangle()
+                                .fill(Color.background)
+                            VStack{
+                                Text("Your selected locations:")
                                     .font(.system(size: 30.0))
-                                    .shadow(radius: 10)
+                                    .fontWeight(.bold)
+                                    .padding()
+                                
+                                List{
+                                    ForEach(locationNames, id:\.self){name in
+                                        Text(name!)
+                                            .font(.system(size: 20.0))
+                                    }
+                                    .onDelete(perform: { indexSet in
+                                        locationNames.remove(atOffsets: indexSet)
+                                        destinations.remove(atOffsets: indexSet)
+                                    })
+                                }
+                                .padding()
+                                .background(Color.background)
+                                .scrollContentBackground(.hidden)
+                                
+                                NavigationLink{
+                                    RouteResultView(destinations: destinations, locationNames: locationNames)
+                                } label: {
+                                    ZStack{
+                                        RoundedRectangle(cornerRadius: 20.0)
+                                            .fill(Color.button)
+                                            Text("Start")
+                                            .foregroundStyle(Color.white)
+                                            .fontWeight(.semibold)
+                                            .font(.system(size: 30.0))
+                                            .shadow(radius: 10)
+                                    }
+                                    .frame(width: 200, height: 50)
+                                }
+                                .padding(.bottom, 16)
                             }
-                            .frame(width: 200, height: 50)
                         }
-                        .padding(.bottom, 16)
                     }
                 }
                 .frame(maxHeight: 400)
             }
+            
         }
     }
 }
@@ -94,9 +120,9 @@ extension InsertLocationView{
                 let search = MKLocalSearch(request: request)
                 let response = try? await search.start()
                 searchResults = response?.mapItems ?? []
-                addDestination(address: searchResults[0])
-                print(destinations)
-                locationNames.append(searchResults[0].name)
+//                addDestination(address: searchResults[0])
+//                print(destinations)
+//                locationNames.append(searchResults[0].name)
             }
         }
     
@@ -106,5 +132,6 @@ extension InsertLocationView{
         }
         
         self.destinations.append(addressCoordinate)
+        self.locationNames.append(address?.name)
     }
 }

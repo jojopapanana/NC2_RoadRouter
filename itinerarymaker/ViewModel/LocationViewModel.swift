@@ -16,6 +16,8 @@ class LocationViewModel: ObservableObject{
     @Published var optimizedLocationNames:[String?] = []
     @Published var optimizedLocationCoordinates:[CLLocationCoordinate2D?] = []
     @Published var totalTravelDistance:Double = 0.0
+    @Published var startingPoint:String? = ""
+    @Published var finalPoint:String? = ""
     
     func fetchOptimizedRouteFrom(destinations: [CLLocationCoordinate2D?], apiKey: String, locationNames:[String?]) {
         guard destinations.count > 1 else { return }
@@ -71,10 +73,15 @@ class LocationViewModel: ObservableObject{
                         
                         DispatchQueue.main.async {
                             if(locationNames.count == waypointOrder.count+2){
+                                self.startingPoint = locationNames[0]
+                                self.finalPoint = locationNames[locationNames.count-1]
+//                                print("final point: \(finalPoint)")
+                                
                                 self.optimizedLocationNames = [locationNames[0]]
                                 for i in 0..<waypointOrder.count{
                                     self.optimizedLocationNames.append(locationNames[waypointOrder[i]+1])
                                 }
+//                                print("optimized location names: \(optimizedLocationNames)")
                                 self.optimizedLocationNames.append(locationNames[locationNames.count-1])
                                 self.fetchRouteFrom(destinations: orderedDestinations)
                                 
