@@ -75,13 +75,11 @@ class LocationViewModel: ObservableObject{
                             if(locationNames.count == waypointOrder.count+2){
                                 self.startingPoint = locationNames[0]
                                 self.finalPoint = locationNames[locationNames.count-1]
-//                                print("final point: \(finalPoint)")
                                 
                                 self.optimizedLocationNames = [locationNames[0]]
                                 for i in 0..<waypointOrder.count{
                                     self.optimizedLocationNames.append(locationNames[waypointOrder[i]+1])
                                 }
-//                                print("optimized location names: \(optimizedLocationNames)")
                                 self.optimizedLocationNames.append(locationNames[locationNames.count-1])
                                 self.fetchRouteFrom(destinations: orderedDestinations)
                                 

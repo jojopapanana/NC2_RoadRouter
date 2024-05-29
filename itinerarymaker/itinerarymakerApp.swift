@@ -13,7 +13,7 @@ struct itinerarymakerApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            LandingPage()
                 .modelContainer(for: Routes.self)
         }
     }

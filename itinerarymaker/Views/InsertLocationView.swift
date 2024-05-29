@@ -73,8 +73,10 @@ struct InsertLocationView: View {
                                             .font(.system(size: 20.0))
                                     }
                                     .onDelete(perform: { indexSet in
-                                        locationNames.remove(atOffsets: indexSet)
-                                        destinations.remove(atOffsets: indexSet)
+                                        for index in indexSet{
+                                            locationNames.remove(at: index)
+                                            destinations.remove(at: index)
+                                        }
                                     })
                                 }
                                 .padding()
@@ -120,9 +122,6 @@ extension InsertLocationView{
                 let search = MKLocalSearch(request: request)
                 let response = try? await search.start()
                 searchResults = response?.mapItems ?? []
-//                addDestination(address: searchResults[0])
-//                print(destinations)
-//                locationNames.append(searchResults[0].name)
             }
         }
     
