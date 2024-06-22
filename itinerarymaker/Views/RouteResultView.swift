@@ -105,7 +105,7 @@ struct RouteResultView: View {
                     }
                 }
                 .ignoresSafeArea()
-                .onAppear(perform: {vm.fetchOptimizedRouteFrom(destinations: destinations, apiKey: "AIzaSyCPmcKGFLXqJQtlsstygllMmEV-tfdspJA", locationNames: locationNames)
+                .onAppear(perform: {vm.fetchOptimizedRouteFrom(destinations: destinations, apiKey: "YOUR_API_KEY", locationNames: locationNames)
                 })
                 .overlay(alignment: .bottom, content: {
                     HStack {

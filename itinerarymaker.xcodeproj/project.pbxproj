@@ -93,6 +93,7 @@
 		5BC3637A2BF3C085004D46DB /* itinerarymaker */ = {
 			isa = PBXGroup;
 			children = (
+				5BEAAAD32C08699400790705 /* Extensions */,
 				5B1BA71E2BFCF19B008E1C00 /* Model */,
 				5B1BA71B2BFC4FF0008E1C00 /* ViewModel */,
 				5B1BA7162BFC4A81008E1C00 /* Views */,
@@ -110,6 +111,13 @@
 				5BC363842BF3C086004D46DB /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		5BEAAAD32C08699400790705 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
