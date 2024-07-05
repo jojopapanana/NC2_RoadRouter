@@ -14,7 +14,6 @@
 		5B1BA7202BFCF1AC008E1C00 /* Routes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BA71F2BFCF1AC008E1C00 /* Routes.swift */; };
 		5B1BA7222BFCF7DF008E1C00 /* SavedRoutesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5B1BA7212BFCF7DF008E1C00 /* SavedRoutesView.swift */; };
 		5BC3637C2BF3C085004D46DB /* itinerarymakerApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3637B2BF3C085004D46DB /* itinerarymakerApp.swift */; };
-		5BC3637E2BF3C085004D46DB /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3637D2BF3C085004D46DB /* ContentView.swift */; };
 		5BC363802BF3C085004D46DB /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5BC3637F2BF3C085004D46DB /* Item.swift */; };
 		5BC363822BF3C086004D46DB /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BC363812BF3C086004D46DB /* Assets.xcassets */; };
 		5BC363852BF3C086004D46DB /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 5BC363842BF3C086004D46DB /* Preview Assets.xcassets */; };
@@ -29,7 +28,6 @@
 		5B1BA7212BFCF7DF008E1C00 /* SavedRoutesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedRoutesView.swift; sourceTree = "<group>"; };
 		5BC363782BF3C085004D46DB /* itinerarymaker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = itinerarymaker.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5BC3637B2BF3C085004D46DB /* itinerarymakerApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = itinerarymakerApp.swift; sourceTree = "<group>"; };
-		5BC3637D2BF3C085004D46DB /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		5BC3637F2BF3C085004D46DB /* Item.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
 		5BC363812BF3C086004D46DB /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		5BC363842BF3C086004D46DB /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
@@ -51,7 +49,6 @@
 			children = (
 				5B1BA7172BFC4A8E008E1C00 /* LandingPage.swift */,
 				5B1BA7192BFC4BFF008E1C00 /* InsertLocationView.swift */,
-				5BC3637D2BF3C085004D46DB /* ContentView.swift */,
 				5B1BA71C2BFC50CF008E1C00 /* RouteResultView.swift */,
 				5B1BA7212BFCF7DF008E1C00 /* SavedRoutesView.swift */,
 			);
@@ -193,7 +190,6 @@
 				5B1BA7182BFC4A8E008E1C00 /* LandingPage.swift in Sources */,
 				5B1BA7202BFCF1AC008E1C00 /* Routes.swift in Sources */,
 				5B1BA71D2BFC50CF008E1C00 /* RouteResultView.swift in Sources */,
-				5BC3637E2BF3C085004D46DB /* ContentView.swift in Sources */,
 				5B1BA71A2BFC4BFF008E1C00 /* InsertLocationView.swift in Sources */,
 				5B1BA7222BFCF7DF008E1C00 /* SavedRoutesView.swift in Sources */,
 				5BC363802BF3C085004D46DB /* Item.swift in Sources */,
